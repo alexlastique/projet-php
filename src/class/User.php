@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class User extends DbObject{
     public $id;
     public $email;
     public $username;
@@ -37,7 +37,7 @@ class User {
         return (hash('sha256', $password) === $this->password); // true ou false
     }
     
-    public function save() {
+    public function save($user) {
         global $db;
         $query = $db->prepare('INSERT INTO users (email, username, password, role, last_ip) VALUES(?, ?, ?, ?, ?)');
         $query->execute([
