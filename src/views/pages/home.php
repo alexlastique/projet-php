@@ -9,11 +9,12 @@ ob_start();?>
         <input type="text" placeholder="search" name="search">
         <button type="submit">search</button>
     </form>
-    <?php foreach($_SESSION["produit"] as $produit):
-            echo($produit["nom"]);?> <br>
+    <?php foreach($_SESSION["produit"] as $produit):?>
+            <a href="/?p=product&slug=<?=$produit["nom"]?>">
+            <?=$produit["nom"]?> <br>
             <?=($produit["categorie"]);?> <br>
             <img src="<?=($produit["image"]);?>"> <br>
-            <?=($produit["quantite"]);?> <br>
+            <?=($produit["quantite"]);?></a> <br>
             <?php endforeach;
             unset($_SESSION["produit"]);?>
 </div>
