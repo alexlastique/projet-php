@@ -9,26 +9,41 @@ ob_start();?>
 
     <?php require_once __DIR__ . '/../partials/show_error.php'; ?>
 
+    <p>Ajouter un produit :</p>
     <form action="/actions/form.php" method="POST">
         <input type="text" name="nom" placeholder="nom">
         <input type="text" name="categorie" placeholder="categorie">
         <input type="file" name="image" placeholder="image">
         <input type="number" name="quantite" placeholder="quantite">
+        <input type="text" name="prix" placeholder="prix">
         <button type="submit">Ajouter un produit</button>
     </form>
-    <form action="/actions/form.php" method="POST">
-        <input type="text" name="nomM" placeholder="nom">
-        <input type="text" name="categorieM" placeholder="categorie">
-        <input type="file" name="imageM" placeholder="image">
-        <input type="number" name="quantiteM" placeholder="quantite">
-        <button type="submit">Ajouter un produit</button>
+    <br>
+
+    <p>Modifier un produit :</p>
+    <form action="/actions/formM.php" method="POST">
+        ancien produit
+        <input type="text" name="nomA" placeholder="ancien nom">
+        <input type="text" name="categorieA" placeholder="ancienne categorie">
+        <br>
+        <br>
+        nouveau produit
+        <input type="text" name="nomN" placeholder="nom">
+        <input type="text" name="categorieN" placeholder="categorie">
+        <input type="file" name="imageN" placeholder="image">
+        <input type="number" name="quantiteN" placeholder="quantite">
+        <input type="text" name="prixN" placeholder="prix">
+        <br>
+        <br>
+        <button type="submit">Modifier produit</button>
     </form>
-    <form action="/actions/form.php" method="POST">
+    <br>
+
+    <p>Suprimer un produit :</p>
+    <form action="/actions/formS.php" method="POST">
         <input type="text" name="nomS" placeholder="nom">
         <input type="text" name="categorieS" placeholder="categorie">
-        <input type="file" name="imageS" placeholder="image">
-        <input type="number" name="quantiteS" placeholder="quantite">
-        <button type="submit">Ajouter un produit</button>
+        <button type="submit">Suprimer</button>
     </form>
 </div>
 <?php
