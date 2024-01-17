@@ -1,32 +1,32 @@
 <?php
 
-require_once __DIR__ . '/DbObject.php'; 
-
-class User extends DbObject{
+class User {
     public $id;
-    public $email;
-    public $username;
-    public $password;
     public $role;
-    public $created_at;
-    public $last_ip;
+    public $email;
+    public $password;
+    public $id_c;
     
-    public static function register($email, $username, $password) {
+    public static function register($email, $password) {
         $user = new User();
         $user->email = $email;
-        $user->username = $username;
         $user->role = 0;
         $user->setPassword($password);
-        $user->last_ip = $_SERVER['REMOTE_ADDR'];
+        $user->id_c = null;
         return $user;
     }
     
     public static function getByEmail($email) {
         global $db;
-        $query = $db->prepare('SELECT * FROM users WHERE email = ?');
-        $query->execute([$email]);
-        $query->setFetchMode(PDO::FETCH_CLASS, 'User');
-        $user = $query->fetch(); // si pas de result , c'est false;
+        $query = $db->prepare('SELECT * FROM utilisateur WHERE email = :email');
+        $query->execute([':email' => $email]);
+        $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
+        $user = new User();
+        $user->id = $donneeUser[0]["id"];
+        $user->role = $donneeUser[0]["role"];
+        $user->email = $donneeUser[0]["email"];
+        $user->password = $donneeUser[0]["mdp"];
+        $user->id_c = $donneeUser[0]["id_c"];
         return $user;
     }
     
@@ -36,18 +36,17 @@ class User extends DbObject{
     }
     
     public function verifyPassword($password) {
-        return (hash('sha256', $password) === $this->password); // true ou false
+        return (hash('sha256', $password) == $this->password); // true ou false
     }
     
-    public function save($user) {
+    public function save() {
         global $db;
-        $query = $db->prepare('INSERT INTO users (email, username, password, role, last_ip) VALUES(?, ?, ?, ?, ?)');
+        $query = $db->prepare('INSERT INTO utilisateur (role, email, mdp, id_c) VALUES(:role, :email, :mdp, :id_c)');
         $query->execute([
-            $user->email,
-            $user->username,
-            $user->password,
-            $user->role,
-            $user->last_ip
+            ':role' => $this->role,
+            ':email' => $this->email,
+            ':mdp' => $this->password,
+            ':id_c' => $this->id_c,
         ]);
         return $db->lastInsertId();
     }

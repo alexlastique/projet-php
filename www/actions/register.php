@@ -2,26 +2,22 @@
 
 require_once __DIR__ . '/../../src/init.php';
 
-if (!isset($_POST['email'])) {
+if ('' == $_POST['email']) {
     $_SESSION['error_message'] = "Pas d'email";
     header('Location: /?p=register');
     die();
 }
 
-if (!isset($_POST['username'])) {
-    $_SESSION['error_message'] = "Pas de username";
-    header('Location: /?p=register');
-    die();
-}
-
-if (!isset($_POST['password'])) {
-    $_SESSION['error_message'] = "Pas de password";
+if ('' == $_POST['password']) {
+    $_SESSION['error_message'] = "Pas de mot de passe";
     header('Location: /?p=register');
     die();
 }
 
 if (!isset($_POST['cpassword'])) {
-    set_errors("Pas de confirmation de password", 'register');
+    $_SESSION['error_message'] = "Pas de confirmation de mot de passe";
+    header('Location: /?p=register');
+    die();
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -36,15 +32,8 @@ if ($_POST['password'] !== $_POST['cpassword']) {
     die();
 }
 
-$username_len = strlen($_POST['username']);
 
-if ($username_len < 3 || $username_len > 12) {
-    $_SESSION['error_message'] = "Longueur de username incorrect (doit etre entre 3 et 12)";
-    header('Location: /?p=register');
-    die();
-}
-
-$user = User::register($_POST['email'], $_POST['username'], $_POST['password']);
+$user = User::register($_POST['email'], $_POST['password']);
 $user_id = $user->save();
 
 // auto connect after register
