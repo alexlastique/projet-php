@@ -1,0 +1,56 @@
+footer {
+    background-color: #20192b;
+    margin-top: 7%;
+}
+
+.ap5 {
+    display: flex;
+    justify-content: space-evenly;
+    color: #ec9123;
+}
+
+
+.list-ap {
+    width: 300px;
+    flex-direction: column;
+}
+
+.list-ap li {
+    list-style: square;
+    margin: 3% 0;
+}
+
+.logo-sm {
+    font-size: 30px;
+    display: flex;
+    margin-top: 20px;
+}
+footer li a{
+    text-decoration: none;
+    color: white;
+    opacity: 0.7;
+}
+
+.ap3 a,p,.logo,.title-foot{
+    color: rgb(188, 181, 181);
+}
+.logo-sm a{
+    background-color: #ec9123;
+    margin-right: 15px;
+    padding: 1.5% 2.5%;
+    border-radius: 5%;
+    font-size: 20px;
+}
+
+.location {
+    text-decoration: none;
+    color: rgb(188, 181, 181);
+}
+span{
+    color: #ec9123;
+    font-weight: 100;
+}
+.title-foot{
+    font-size: 25px;
+    color: white;
+}

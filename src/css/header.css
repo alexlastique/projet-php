@@ -1,0 +1,38 @@
+header{
+    background: transparent;
+}
+h2{
+    font-size: 150%;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1.5%;
+    align-items: center;
+}
+ul{
+    display: flex;
+    padding: 0;
+    justify-content: space-evenly;
+    width: 35%;
+}
+nav li{
+    list-style: none;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-top: 38px;
+    font-weight: bold;
+
+}
+nav ul a:hover{
+    color: orange;
+    border-top: 3px orange solid;
+}
+#jeu header{
+    background-color: #20192b;
+    color: white;
+    margin-bottom: 7%;
+}

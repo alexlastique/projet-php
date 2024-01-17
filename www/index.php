@@ -15,5 +15,10 @@ if (isset($_GET['p'])) {
 require_once __DIR__ . '/../src/views/partials/navbar.php';
 require_once __DIR__ . '/../src/views/partials/footer.php';
 require_once __DIR__ . '/../src/views/pages/'. $page .'.php';
+?>
+<?= $navbar ?>
+<?= $page_content ?>
+<?= $footer ?>
 
-require_once __DIR__ . '/../src/views/template.php';
+
+
