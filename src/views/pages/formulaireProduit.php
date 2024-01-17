@@ -13,7 +13,7 @@ ob_start();?>
         <input type="text" name="nom" placeholder="nom">
         <input type="text" name="categorie" placeholder="categorie">
         <input type="file" name="image" placeholder="image">
-        <input type="text" name="quantite" placeholder="quantite">
+        <input type="number" name="quantite" placeholder="quantite">
         <button type="submit">Ajouter un produit</button>
     </form>
 </div>

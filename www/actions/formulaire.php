@@ -11,8 +11,8 @@ if ('' == $_POST['categorie']) {
     header('Location: /?p=formulaireProduit');
     die();
 }
-if ('' == $_POST['quantite'] OR !is_int($_POST['quantite'])) {
-    $_SESSION['error_message'] = "Pas de quantite ou quantite pas = a un nombre";
+if ('' == $_POST['quantite']) {
+    $_SESSION['error_message'] = "Pas de quantite";
     header('Location: /?p=formulaireProduit');
     die();
 }
