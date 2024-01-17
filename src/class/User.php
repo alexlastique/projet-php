@@ -30,6 +30,20 @@ class User {
         return $user;
     }
 
+    public static function getById($id) {
+        global $db;
+        $query = $db->prepare('SELECT * FROM utilisateur WHERE id = :id');
+        $query->execute([':id' => $id]);
+        $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
+        $user = new User();
+        $user->id = $donneeUser[0]["id"];
+        $user->role = $donneeUser[0]["role"];
+        $user->email = $donneeUser[0]["email"];
+        $user->password = $donneeUser[0]["mdp"];
+        $user->id_c = $donneeUser[0]["id_c"];
+        return $user;
+    }
+
     public function setPassword($password) {
         $this->password = hash('sha256', $password);
         return $this->password;
