@@ -41,5 +41,7 @@ $query->execute([
     ':image' => $_POST['image'],
     ':quantite' => $_POST['quantite'],
 ]);
+
+$_SESSION['error_message'] = "Produit ajouté";
 header('Location: /?p=productForm');
 ?>
