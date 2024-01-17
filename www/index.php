@@ -1,6 +1,16 @@
 <?php
-
 require_once __DIR__ . '/../src/init.php';
+function allProduct($laDb){
+    $query = $laDb->prepare('SELECT nom FROM produit');
+    $query->execute();
+    $allProduct = $query->fetchAll();
+    $existing_pages = [];
+    foreach($allProduct as $product){
+        array_push($existing_pages, $product["nom"]);
+    }
+    return $existing_pages;
+}
+$existing_product = allProduct($db);
 
 $page = 'home';
 

@@ -17,7 +17,7 @@ if ($user != '' AND $user->role == 1) {
         <form action="/actions/form.php" method="POST">
             <input type="text" name="nom" placeholder="nom">
             <input type="text" name="categorie" placeholder="categorie">
-            <input type="file" name="image" placeholder="image">
+            <input type="text" name="image" placeholder="lien image">
             <input type="number" name="quantite" placeholder="quantite">
             <input type="text" name="prix" placeholder="prix">
             <button type="submit">Ajouter un produit</button>
@@ -35,7 +35,7 @@ if ($user != '' AND $user->role == 1) {
             nouveau produit
             <input type="text" name="nomN" placeholder="nom">
             <input type="text" name="categorieN" placeholder="categorie">
-            <input type="file" name="imageN" placeholder="image">
+            <input type="text" name="imageN" placeholder="lien image">
             <input type="number" name="quantiteN" placeholder="quantite">
             <input type="text" name="prixN" placeholder="prix">
             <br>
