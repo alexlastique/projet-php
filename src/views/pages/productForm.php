@@ -15,6 +15,7 @@ ob_start();?>
         <input type="text" name="categorie" placeholder="categorie">
         <input type="file" name="image" placeholder="image">
         <input type="number" name="quantite" placeholder="quantite">
+        <input type="text" name="prix" placeholder="prix">
         <button type="submit">Ajouter un produit</button>
     </form>
     <br>
@@ -31,6 +32,7 @@ ob_start();?>
         <input type="text" name="categorieN" placeholder="categorie">
         <input type="file" name="imageN" placeholder="image">
         <input type="number" name="quantiteN" placeholder="quantite">
+        <input type="text" name="prixN" placeholder="prix">
         <br>
         <br>
         <button type="submit">Modifier produit</button>
