@@ -5,7 +5,7 @@ require_once __DIR__ . '/db.php';
 
 // config du site
 $existing_pages = ['home', 'login', 'register', 'product'];
-$existing_product = ['OnePieceTome106'];
+$existing_product = ['One Piece Tome 106','Spy x family Tome 1'];
 
 // les classes
 require_once __DIR__ . '/class/User.php';
