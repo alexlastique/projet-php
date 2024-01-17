@@ -8,7 +8,7 @@ main {
 }
 
 body {
-    background-color: #20173b;
+    background-color: #ffb706;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -351,7 +351,6 @@ h1,ul {
     border: 0px solid #ccc;
     padding: 12px 16px;
     border-radius: 3px;
-    background-color: #ec9123;
     color: white;
     text-decoration: none;
     margin: 8px 0;
@@ -400,13 +399,6 @@ h1,ul {
     width: 250px;
 }
 
-/* FOOTER */
-
-footer {
-    background-color: #20173b;
-    margin-top: 7%;
-}
-
 .ap5 {
     display: flex;
     justify-content: space-evenly;
@@ -428,11 +420,6 @@ footer {
     font-size: 30px;
     display: flex;
     margin-top: 20px;
-}
-footer li a{
-    text-decoration: none;
-    color: white;
-    opacity: 0.7;
 }
 
 .ap3 a,p,.logo,.title-foot{
@@ -460,11 +447,9 @@ span{
 *{
     font-family: 'Poppins', sans-serif;
 }
-#acceuil,#jeu{
-    background-color: #20173b;
-}
+
 #acceuil #grandeImage{
-    background-image: url(../images/grandeImage.png);
+    background-image: url(../image/bleach_w.jpg);
     background-size: cover;
     color: white;
 }
@@ -473,6 +458,7 @@ span{
 }
 #acceuil #intro{
     text-align: center;
+    padding-top: 16%;
 }
 #acceuil h1{
     line-height: 90%;
@@ -731,10 +717,6 @@ hr {
     }
 }
 /*Partie du code Navbar */
-body{
-    background-color: #20173b;
-    font-family: 'Poppins', sans-serif;
-}
 h1{
     font-size: 16px ;
     font-weight: bold;
@@ -933,18 +915,8 @@ form{
 
   
 /*Bas de la page*/
-footer {
-    background-color: #20173b;
-    margin-top: 7%;
-}
 
-.ap5 {
-    display: flex;
-    justify-content: space-evenly;
-    color: #ec9123;
-    padding-bottom: 70px;
 
-}
 .ap4{
     padding-top: 30px;
 }
@@ -965,11 +937,7 @@ footer {
     display: flex;
     margin-top: 20px;
 }
-footer li a{
-    text-decoration: none;
-    color: white;
-    opacity: 0.7;
-}
+
 .ap3 a,p,.logo,.title-foot{
     color: rgb(188, 181, 181);
 }
@@ -994,16 +962,7 @@ span{
     color: #ec9123;
     font-weight: 100;
 }
-#deepFooter{
-    display: flex;
-    flex-direction: column;
-}
-#contentDeepFooter{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 16%;
 
-}
 #onTop{
     width: 30px;
     height: 30px;
@@ -1011,4 +970,15 @@ span{
     text-align: center;
     color: black;
     opacity: 0.4;
+}
+
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }

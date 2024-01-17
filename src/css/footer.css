@@ -1,56 +1,85 @@
-footer {
-    background-color: #20192b;
-    margin-top: 7%;
-}
-
-.ap5 {
-    display: flex;
-    justify-content: space-evenly;
-    color: #ec9123;
-}
-
-
-.list-ap {
-    width: 300px;
-    flex-direction: column;
-}
-
-.list-ap li {
-    list-style: square;
-    margin: 3% 0;
-}
-
-.logo-sm {
-    font-size: 30px;
-    display: flex;
-    margin-top: 20px;
-}
-footer li a{
-    text-decoration: none;
+footer .logo{
+    background-color: #EC9224;
     color: white;
-    opacity: 0.7;
+    padding: 0.7vw;
+    margin-right: 0.3vw;
+    border-radius: 10%;
 }
 
-.ap3 a,p,.logo,.title-foot{
-    color: rgb(188, 181, 181);
-}
-.logo-sm a{
-    background-color: #ec9123;
-    margin-right: 15px;
-    padding: 1.5% 2.5%;
-    border-radius: 5%;
-    font-size: 20px;
+.footer{
+    position: fixed;
+    display: flex;
+    background-color: #0c0a35;
+    margin: auto;
+    justify-content: space-around;
+    height: 40vw;
+    padding-top: 3vw;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: 1.5vw;
 }
 
-.location {
+.footer_down{
+    display: flex;
+    background-color: #0D0B26;
+    margin: auto;
+    height: 4vw;
+    justify-content: flex-start;
+    padding-left: 17vw;
+    padding-top: 2.5vw;
+}
+
+a{
+    color: white;
     text-decoration: none;
-    color: rgb(188, 181, 181);
 }
-span{
-    color: #ec9123;
-    font-weight: 100;
+body{
+    margin: 0vw;
 }
-.title-foot{
-    font-size: 25px;
+p{
+    color: white;
+    padding-bottom: 1vw;
+}
+h1{
+    font-style: strong;
     color: white;
 }
+footer{
+    display: block;
+    bottom:0vw;
+    width:100%;
+    height:10vw;
+    font-family: 'Roboto', sans-serif;
+}
+.orange{
+    color: #ec9224;
+}
+footer{
+    padding-bottom: 1.5vw;
+}
+footer li{
+    list-style: none;
+    padding-bottom: 1.5vw;
+}
+
+footer li::before {
+    content: "\25A0";
+    color: orange;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+    padding-left: 8%;
+}
+footer ul{
+    padding-left: 1%;
+}
+
+.bouton_header{
+    position:absolute;
+    right: 5%;
+    background-color: #EC9224;
+    border-radius: 10%;
+    font-size: 150%;
+    padding: 0.7vw;
+ }
