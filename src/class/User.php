@@ -16,7 +16,7 @@ class User {
 
     public static function getByEmail($email) {
         global $db;
-        $query = $db->prepare('SELECT * FROM user WHERE email = :email');
+        $query = $db->prepare('SELECT * FROM `user` WHERE email = :email');
         $query->execute([':email' => $email]);
         $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
         $user = new User();
@@ -51,7 +51,7 @@ class User {
 
     public function save() {
         global $db;
-        $query = $db->prepare('INSERT INTO user (role, email, mdp) VALUES(:role, :email, :mdp)');
+        $query = $db->prepare('INSERT INTO `user`(`role`, `email`, `mdp`) VALUES (:role, :email, :mdp)');
         $query->execute([
             ':role' => $this->role,
             ':email' => $this->email,
