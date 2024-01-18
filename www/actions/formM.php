@@ -41,13 +41,6 @@ if ('' == $_POST['prixN'] OR floatval($_POST['prixN']) == 0) {
 }
 
 
-$extensionsValides = array('png', 'jpg', 'jpeg');
-$extensionsUpload = strtolower(substr(strrchr($_POST['imageN'],"."),1));
-if (!(in_array($extensionsUpload, $extensionsValides))) {
-    $_SESSION['error_message'] = "Mauvaise extension";
-    header('Location: /?p=productForm');
-    die();
-}
 
 
 global $db;

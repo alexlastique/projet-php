@@ -4,11 +4,12 @@ session_start();
 require_once __DIR__ . '/db.php';
 
 // config du site
-$existing_pages = ['home', 'login', 'register', 'product', 'productForm','panier'];
-$existing_product = ['One Piece Tome 106','Spy x family Tome 1'];
+$existing_pages = ['home', 'login', 'register', 'product', 'productForm','panier', 'command'];
 
 // les classes
 require_once __DIR__ . '/class/User.php';
 
 // tous les utilitaires
 require_once __DIR__ . '/utils/error.php';
+
+
