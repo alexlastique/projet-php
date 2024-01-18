@@ -5,7 +5,6 @@ class User {
     public $role;
     public $email;
     public $password;
-    public $id_c;
 
     public static function register($email, $password) {
         $user = new User();
@@ -17,8 +16,21 @@ class User {
 
     public static function getByEmail($email) {
         global $db;
-        $query = $db->prepare('SELECT * FROM user WHERE email = :email');
+        $query = $db->prepare('SELECT * FROM `user` WHERE email = :email');
         $query->execute([':email' => $email]);
+        $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
+        $user = new User();
+        $user->id = $donneeUser[0]["id"];
+        $user->role = $donneeUser[0]["role"];
+        $user->email = $donneeUser[0]["email"];
+        $user->password = $donneeUser[0]["mdp"];
+        return $user;
+    }
+
+    public static function getById($id) {
+        global $db;
+        $query = $db->prepare('SELECT * FROM user WHERE id = :id');
+        $query->execute([':id' => $id]);
         $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
         $user = new User();
         $user->id = $donneeUser[0]["id"];
@@ -39,7 +51,7 @@ class User {
 
     public function save() {
         global $db;
-        $query = $db->prepare('INSERT INTO user (`role`, email, mdp) VALUES(:role, :email, :mdp)');
+        $query = $db->prepare('INSERT INTO `user`(`role`, `email`, `mdp`) VALUES (:role, :email, :mdp)');
         $query->execute([
             ':role' => $this->role,
             ':email' => $this->email,

@@ -21,11 +21,8 @@ if ('' == $_POST['image']) {
     header('Location: /?p=productForm');
     die();
 }
-
-$extensionsValides = array('png', 'jpg', 'jpeg');
-$extensionsUpload = strtolower(substr(strrchr($_POST['image'],"."),1));
-if (!(in_array($extensionsUpload, $extensionsValides))) {
-    $_SESSION['error_message'] = "Mauvaise extension";
+if ('' == $_POST['prix'] OR floatval($_POST['prix']) == 0) {
+    $_SESSION['error_message'] = "Pas de prix ou pas de prix flottant";
     header('Location: /?p=productForm');
     die();
 }
@@ -33,13 +30,15 @@ if (!(in_array($extensionsUpload, $extensionsValides))) {
 
 global $db;
 
-$query = $db->prepare('INSERT INTO produit (nom, categorie, image, quantite) VALUES(:nom, :categorie, :image, :quantite)');
+$query = $db->prepare('INSERT INTO product (`name`, category, `image`, quantity, price) VALUES(:nom, :categorie, :image, :quantite, :prix)');
 
 $query->execute([
     ':nom' => $_POST['nom'],
     ':categorie' => $_POST['categorie'],
     ':image' => $_POST['image'],
     ':quantite' => $_POST['quantite'],
+    ':prix' => $_POST['prix']
 ]);
+
+$_SESSION['error_message'] = "Produit ajouté";
 header('Location: /?p=productForm');
-?>
