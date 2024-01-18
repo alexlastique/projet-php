@@ -18,20 +18,21 @@ ob_start();?>
             <?=($produit["category"]);?> <br>
             <img src="<?=($produit["image"]);?>"> <br>
             <?=($produit["quantity"]);?> <br>
-            <?=($produit["price"]);?> <br>
+            <?=($produit["price"]);?> € <br>
             <?php endforeach;?>
 
 <?php
-
-foreach ($_SESSION['command'] as $produit) {
-    if ($produit["container"] == $_GET['slug']){
-        echo ('<form action="/actions/product.php" method="POST">
-        <label for="comment">Commentaire:</label>
-        <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
-        <button type="submit">envoyer Commentaire</button>
-    </form>');
-    } else{
-        echo ('produit non commander');
+if (isset($_SESSION['command'])){
+    foreach ($_SESSION['command'] as $produit) {
+        if ($produit["container"] == $_GET['slug']){
+            echo ('<form action="/actions/product.php" method="POST">
+            <label for="comment">Commentaire:</label>
+            <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+            <button type="submit">envoyer Commentaire</button>
+        </form>');
+        } else{
+            echo ('produit non commander');
+        }
     }
 }
 

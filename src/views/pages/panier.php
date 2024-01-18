@@ -1,4 +1,9 @@
 <?php
+
+$title = 'home';
+
+ob_start();?>
+<?php
 echo "<h1>Mon Panier</h1>";
 $disponibility = true;
 $panier = [
@@ -15,7 +20,7 @@ function verifierDisponibilite($quantite,$valeur,$disponible) {
 }
 foreach ($panier as $clef => $valeur){
 
-    $dbsql = $db->prepare("SELECT * FROM produit WHERE nom LIKE :nom");
+    $dbsql = $db->prepare("SELECT * FROM product WHERE `name` LIKE :nom");
     $dbsql->execute([
         ':nom' => $clef
     ]);
@@ -23,7 +28,7 @@ foreach ($panier as $clef => $valeur){
     echo($clef);
 
     foreach ($produits as $row) {
-        $quantite = $row['quantite'];
+        $quantite = $row['quantity'];
         $disponibility = verifierDisponibilite($quantite, $valeur,$disponibility);
     }
 }
@@ -31,3 +36,6 @@ if (!$disponibility) {
     echo 'commande ne peut pas être passer !';
 }
 ?>
+
+<?php
+$page_content = ob_get_clean();

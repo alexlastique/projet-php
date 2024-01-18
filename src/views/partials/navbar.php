@@ -1,7 +1,9 @@
 <?php
 
 ob_start();
+if (isset($_SESSION['user_id'])){
 echo $_SESSION['user_id'];
+}
 ?>
 <ul>
     <li><a href="/?p=register">Go to Register</a></li>
