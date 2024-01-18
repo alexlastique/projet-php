@@ -27,18 +27,10 @@ if ('' == $_POST['prix'] OR floatval($_POST['prix']) == 0) {
     die();
 }
 
-$extensionsValides = array('png', 'jpg', 'jpeg');
-$extensionsUpload = strtolower(substr(strrchr($_POST['image'],"."),1));
-if (!(in_array($extensionsUpload, $extensionsValides))) {
-    $_SESSION['error_message'] = "Mauvaise extension";
-    header('Location: /?p=productForm');
-    die();
-}
-
 
 global $db;
 
-$query = $db->prepare('INSERT INTO produit (nom, categorie, image, quantite, prix) 
+$query = $db->prepare('INSERT INTO product (name, category, image, quantity, price) 
 VALUES(:nom, :categorie, :image, :quantite, :prix)');
 
 $query->execute([

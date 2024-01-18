@@ -15,8 +15,8 @@ if ('' == $_POST['categorieS']) {
 
 global $db;
 
-$query = $db->prepare('DELETE FROM produit
-WHERE nom = :nom AND categorie = :categorie');
+$query = $db->prepare('DELETE FROM product
+WHERE name = :nom AND category = :categorie');
 
 $query->execute([
     ':nom' => $_POST['nomS'],
