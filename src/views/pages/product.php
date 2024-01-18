@@ -6,7 +6,7 @@ $title = 'product';
 $_SESSION['currentProduct'] = $_GET['slug'];
 ob_start();?>
 <div>
-PAGE PRODUCT <br>
+    PAGE PRODUCT <br>
     <?php $dbsql=$db->prepare("SELECT * FROM product WHERE `name` LIKE :nom");
     $dbsql-> execute([
         ':nom' => $_GET['slug']

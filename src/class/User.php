@@ -5,14 +5,12 @@ class User {
     public $role;
     public $email;
     public $password;
-    public $id_c;
 
     public static function register($email, $password) {
         $user = new User();
         $user->email = $email;
         $user->role = 0;
         $user->setPassword($password);
-        $user->id_c = null;
         return $user;
     }
 
@@ -48,4 +46,4 @@ class User {
         ]);
         return $db->lastInsertId();
     }
-} 
+}
