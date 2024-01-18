@@ -26,7 +26,7 @@ ob_start();?>
                 <?=$produit["name"]?> <br>
                 <?=($produit["category"]);?> <br>
                 <img src="<?=($produit["image"]);?>"> <br>
-                <?=($produit["quantity"]);?></a> <br>
+                <?=($produit["quantity"]);?> <br>
                 <?=($produit["price"]);?> €</a> <br>
                 <?php endforeach;
                 unset($_SESSION["produit"]);}?>
