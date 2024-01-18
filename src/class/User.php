@@ -55,7 +55,7 @@ class User {
         $query->execute([
             ':role' => $this->role,
             ':email' => $this->email,
-            ':mdp' => $this->password,
+            ':mdp' => $this->password
         ]);
         return $db->lastInsertId();
     }
