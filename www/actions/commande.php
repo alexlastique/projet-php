@@ -16,21 +16,42 @@ if ('' == $_POST['adresse']) {
     header('Location: /?p=commande');
     die();
 }
-$query = $db->prepare("SELECT * FROM `utilisateur` WHERE id LIKE :id");
+$query = $db->prepare("SELECT * FROM `user` WHERE id LIKE :id");
 
 $query->execute([
     ':id' => $_SESSION['user_id'],
 ]);
 $produits =$query->fetchAll();
 
-$query2 = $db->prepare("INSERT INTO `commande`(`statut`, `containeur`, `adresse`, `id_u`) VALUES ('SEND', :containeur, :adresse, :id)");
+foreach($_SESSION['panier'] as $panier){
+    $query = $db->prepare("SELECT * FROM `product` WHERE `name`=:nom");
 
-$query2->execute([
-    ':containeur' => $_SESSION['panier'],
-    ':adresse' => $_POST['adresse'],
-    ':id' => $_SESSION['user_id']
-]);
+    $query->execute([
+        ':nom' => $panier
+    ]);
+    $quantity = $query->fetchAll();
 
+    if($quantity[0]['quantity']>0){
+    $query = $db->prepare("UPDATE `product` SET `quantity`=:quantity WHERE `name`=:nom");
+
+    $query->execute([
+        ':quantity' => intval($quantity[0]['quantity'])-1,
+        ':nom' => $panier
+    ]);
+
+    $query2 = $db->prepare("INSERT INTO `command`(`status`, `container`, `address`, `idUser`) VALUES (:statut, :containeur, :adresse, :id)");
+
+    $query2->execute([
+        ':statut' => "SENT",
+        ':containeur' => $panier,
+        ':adresse' => $_POST['adresse'],
+        ':id' => intval($_SESSION['user_id'])
+    ]);
+    }else{
+        $_SESSION['error_message'] = "Pas asser de produit";
+    }
+
+}
 $to = $produits[0]["email"];
 $subject = "Commande Nihon Sphere";
 $message = "Votre commande a bien été pris en compte.";
