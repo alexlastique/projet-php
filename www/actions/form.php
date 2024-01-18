@@ -51,4 +51,3 @@ $query->execute([
 
 $_SESSION['error_message'] = "Produit ajouté";
 header('Location: /?p=productForm');
-?>
