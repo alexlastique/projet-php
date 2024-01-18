@@ -7,17 +7,18 @@ $title = 'product';
 ob_start();?>
 <div>
     PAGE PRODUCT <br>
-    <?php $dbsql=$db->prepare("SELECT * FROM produit WHERE nom LIKE :nom");
+    <?php $dbsql=$db->prepare("SELECT * FROM product WHERE `name` LIKE :nom");
     $dbsql-> execute([
         ':nom' => $_GET['slug']
     ]);
     $produits =$dbsql->fetchAll();
 
     foreach($produits as $produit):
-            echo($produit["nom"]);?> <br>
-            <?=($produit["categorie"]);?> <br>
+            echo($produit["name"]);?> <br>
+            <?=($produit["category"]);?> <br>
             <img src="<?=($produit["image"]);?>"> <br>
-            <?=($produit["quantite"]);?> <br>
+            <?=($produit["quantity"]);?> <br>
+            <?=($produit["price"]);?> <br>
             <?php endforeach;?>
 </div>
 <?php
