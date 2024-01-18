@@ -19,7 +19,8 @@ ob_start();?>
 </p>
         <button type="submit">search</button>
     </form>
-    <?php foreach($_SESSION["produit"] as $produit):?>
+    <?php 
+    foreach($_SESSION["produit"] as $produit):?>
             <a href="/?p=product&slug=<?=$produit["nom"]?>">
             <?=$produit["nom"]?> <br>
             <?=($produit["categorie"]);?> <br>

@@ -4,7 +4,7 @@ session_start();
 require_once __DIR__ . '/db.php';
 
 // config du site
-$existing_pages = ['home', 'login', 'register', 'product', 'productForm'];
+$existing_pages = ['home', 'login', 'register', 'product', 'productForm','panier'];
 $existing_product = ['One Piece Tome 106','Spy x family Tome 1'];
 
 // les classes

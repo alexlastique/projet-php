@@ -42,4 +42,3 @@ $query->execute([
     ':quantite' => $_POST['quantite'],
 ]);
 header('Location: /?p=productForm');
-?>
