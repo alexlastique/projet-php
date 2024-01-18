@@ -45,9 +45,9 @@ if ('' == $_POST['prixN'] OR floatval($_POST['prixN']) == 0) {
 
 global $db;
 
-$query = $db->prepare('UPDATE produit 
-SET nom = :nomN, categorie = :categorieN, image = :imageN, quantite = :quantiteN, prix = :prixN
-WHERE nom = :nomA AND categorie = :categorieA');
+$query = $db->prepare('UPDATE product 
+SET name = :nomN, category = :categorieN, image = :imageN, quantity = :quantiteN, price = :prixN
+WHERE name = :nomA AND category = :categorieA');
 
 $query->execute([
     ':nomN' => $_POST['nomN'],

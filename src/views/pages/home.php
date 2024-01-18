@@ -10,11 +10,11 @@ ob_start();?>
         <button type="submit">search</button>
     </form>
     <?php foreach($_SESSION["produit"] as $produit):?>
-            <a href="/?p=product&slug=<?=$produit["nom"]?>">
-            <?=$produit["nom"]?> <br>
-            <?=($produit["categorie"]);?> <br>
+            <a href="/?p=product&slug=<?=$produit["name"]?>">
+            <?=$produit["name"]?> <br>
+            <?=($produit["category"]);?> <br>
             <img src="<?=($produit["image"]);?>"> <br>
-            <?=($produit["quantite"]);?></a> <br>
+            <?=($produit["quantity"]);?></a> <br>
             <?php endforeach;
             unset($_SESSION["produit"]);?>
 </div>

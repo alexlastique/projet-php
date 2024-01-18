@@ -5,20 +5,18 @@ class User {
     public $role;
     public $email;
     public $password;
-    public $id_c;
 
     public static function register($email, $password) {
         $user = new User();
         $user->email = $email;
         $user->role = 0;
         $user->setPassword($password);
-        $user->id_c = null;
         return $user;
     }
 
     public static function getByEmail($email) {
         global $db;
-        $query = $db->prepare('SELECT * FROM utilisateur WHERE email = :email');
+        $query = $db->prepare('SELECT * FROM user WHERE email = :email');
         $query->execute([':email' => $email]);
         $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
         $user = new User();
@@ -26,13 +24,12 @@ class User {
         $user->role = $donneeUser[0]["role"];
         $user->email = $donneeUser[0]["email"];
         $user->password = $donneeUser[0]["mdp"];
-        $user->id_c = $donneeUser[0]["id_c"];
         return $user;
     }
 
     public static function getById($id) {
         global $db;
-        $query = $db->prepare('SELECT * FROM utilisateur WHERE id = :id');
+        $query = $db->prepare('SELECT * FROM user WHERE id = :id');
         $query->execute([':id' => $id]);
         $donneeUser = $query->fetchAll(); // si pas de result , c'est false;
         $user = new User();
@@ -40,7 +37,6 @@ class User {
         $user->role = $donneeUser[0]["role"];
         $user->email = $donneeUser[0]["email"];
         $user->password = $donneeUser[0]["mdp"];
-        $user->id_c = $donneeUser[0]["id_c"];
         return $user;
     }
 
@@ -55,12 +51,11 @@ class User {
 
     public function save() {
         global $db;
-        $query = $db->prepare('INSERT INTO utilisateur (role, email, mdp, id_c) VALUES(:role, :email, :mdp, :id_c)');
+        $query = $db->prepare('INSERT INTO user (role, email, mdp) VALUES(:role, :email, :mdp)');
         $query->execute([
             ':role' => $this->role,
             ':email' => $this->email,
             ':mdp' => $this->password,
-            ':id_c' => $this->id_c,
         ]);
         return $db->lastInsertId();
     }

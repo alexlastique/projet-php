@@ -30,7 +30,7 @@ if ('' == $_POST['prix'] OR floatval($_POST['prix']) == 0) {
 
 global $db;
 
-$query = $db->prepare('INSERT INTO produit (nom, categorie, image, quantite, prix) 
+$query = $db->prepare('INSERT INTO product (name, category, image, quantity, price) 
 VALUES(:nom, :categorie, :image, :quantite, :prix)');
 
 $query->execute([

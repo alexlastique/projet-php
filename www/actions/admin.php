@@ -12,7 +12,7 @@ if (!filter_var($_POST['emailA'], FILTER_VALIDATE_EMAIL)) {
     die();
 }
 
-$query = $db->prepare('UPDATE utilisateur 
+$query = $db->prepare('UPDATE user 
 SET role = 1
 WHERE email = :email');
 
