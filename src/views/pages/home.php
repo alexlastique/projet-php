@@ -1,10 +1,8 @@
 <?php
-
 $title = 'home';
 
 ob_start();?>
 <div>
-    PAGE HOME
     
     <head>
         <meta charset="UTF-8">
@@ -23,53 +21,44 @@ ob_start();?>
         <section id="intro">
             <article>
             <div class="container">
-  <div class="carousel">
-    <div class="a">
-      <div class="item"><?php
-if (isset($_SESSION["produit"]) && count($_SESSION["produit"]) > 0) {
-    foreach($_SESSION["produit"] as $produit):
-        ?>
-        <a href="/?p=product&slug=<?= $produit["name"] ?>">
-            <img src="<?= $produit["image"]; ?>"> <br>
-        </a>
+    <div class="carousel">
         <?php
-    endforeach;
-} else {
-    ?>
-    <img src="path_to_default_image.jpg"> <br>
-    <?php
-}
-?></div>
+        if (isset($_SESSION["produit"]) && count($_SESSION["produit"]) > 0) {
+            $index = 0;
+            foreach ($_SESSION["produit"] as $produit):
+                ?>
+                <div class="<?= chr(97 + $index); ?>">
+                    <div class="item">
+                        <a href="/?p=product&slug=<?= $produit["name"] ?>">
+                            <img src="<?= $produit["image"]; ?>" class="carousel-image"> <br>
+                        </a>
+                    </div>
+                </div>
+                <?php
+                $index++;
+            endforeach;
+        } else {
+            ?>
+            <div class="a"> <!-- Exemple avec la div "a" si aucun produit -->
+                <div class="item">
+                    <img src="path_to_default_image.jpg"> <br>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
     </div>
-    <div class="b">
-      <div class="item">B</div>
-    </div>
-    <div class="c">
-      <div class="item">C</div>
-    </div>
-    <div class="d">
-      <div class="item">D</div>
-    </div>
-    <div class="e">
-      <div class="item">E</div>
-    </div>
-    <div class="f">
-      <div class="item">F</div>
-    </div>
-
-  </div>
 </div>
-<div class="next">Next</div>
-<div class="prev">Prev</div>
+<div class="next">></div>
+<div class="prev"><</div>
+
+</div>
 
     
     </main>
     
 </body>
-<div>
-        LES ARTICLE
-
-    </div>
+<p class="article">LES ARTICLE</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../js/script.js"></script>
 </html>
@@ -87,17 +76,21 @@ if (isset($_SESSION["produit"]) && count($_SESSION["produit"]) > 0) {
 </p>
         <button type="submit">search</button>
     </form>
+    <div class='containerImg'>
     <?php 
     if (isset($_SESSION["produit"])){
         foreach($_SESSION["produit"] as $produit):?>
+        <div class="containerProduit">
+                <p><?=$produit["name"]?> </p> <br>
+                <p><?=($produit["category"]);?></p> <br>
                 <a href="/?p=product&slug=<?=$produit["name"]?>">
-                <?=$produit["name"]?> <br>
-                <?=($produit["category"]);?> <br>
-                <img src="<?=($produit["image"]);?>"> <br>
-                <?=($produit["quantity"]);?></a> <br>
+                <img class="PicProduit" src="<?=($produit["image"]);?>"></a> <br>
+                <p><?=($produit["quantity"]);?></p> <br>
                 <?=($produit["price"]);?> €</a> <br>
+                </div>
                 <?php endforeach;
                 unset($_SESSION["produit"]);}?>
+</div>
 </div>
 <?php
 $page_content = ob_get_clean();

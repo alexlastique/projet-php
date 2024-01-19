@@ -6,7 +6,9 @@ $title = 'product';
 $_SESSION['currentProduct'] = $_GET['slug'];
 ob_start();?>
 <div>
-    PAGE PRODUCT <br>
+    <p>PAGE PRODUCT </p> <br>
+    <div class='containerImg'>
+    <div class="containerProduit">
     <?php $dbsql=$db->prepare("SELECT * FROM product WHERE `name` LIKE :nom");
     $dbsql-> execute([
         ':nom' => $_GET['slug']
@@ -16,7 +18,7 @@ ob_start();?>
     foreach($produits as $produit):
             echo($produit["name"]);?> <br>
             <?=($produit["category"]);?> <br>
-            <img src="<?=($produit["image"]);?>"> <br>
+            <img class="PicProduit" src="<?=($produit["image"]);?>"> <br>
             <?=($produit["quantity"]);?> <br>
             <?=($produit["price"]);?> € <br>
             <?php endforeach;?>
@@ -37,6 +39,8 @@ if (isset($_SESSION['command'])){
 }
 
 ?>
+    </div>
+    </div>
 </div>
 <?php
 $page_content = ob_get_clean();

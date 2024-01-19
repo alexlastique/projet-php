@@ -7,6 +7,7 @@ if ($_POST['search']=="") {
     header('Location: /?p=home');
     die();
 }
+$_SESSION['search'] = true;
 $dbsql=$db->prepare("SELECT * FROM product WHERE `name` LIKE :nom");
 $dbsql-> execute([
     ':nom' => '%'.$_POST['search'].'%'
