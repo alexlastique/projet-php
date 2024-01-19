@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])){
     <li><a href="/?p=home">Go to Home</a></li>
     <li><a href="/?p=login">Go to Login</a></li>
     <li><a href="/?p=command&sort_criteria=creationDate">Go to Command</a></li>
-    <li><a href="/?p=commande">Go to Commande</a></li>
+    <li><a href="/?p=commandUser">Go to CommandUser</a></li>
     <li><a href="/?p=panier">Go to Panier</a></li>
 </ul>
 <?php
