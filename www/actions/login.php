@@ -2,13 +2,13 @@
 
 require_once __DIR__ . '/../../src/init.php';
 
-if (!isset($_POST['email'])) {
+if ('' == $_POST['email']) {
     $_SESSION['error_message'] = "Pas d'email";
     header('Location: /?p=login');
     die();
 }
 
-if (!isset($_POST['password'])) {
+if ('' == $_POST['password']) {
     $_SESSION['error_message'] = "Pas de password";
     header('Location: /?p=login');
     die();

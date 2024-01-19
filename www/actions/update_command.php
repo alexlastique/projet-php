@@ -9,6 +9,6 @@ $query->execute([
     ':command_id' => $_POST['command_id'],
 ]);
 
-header('Location: /?p=command');
+header('Location: /?p=command&sort_criteria=creationDate');
 exit();
 ?>

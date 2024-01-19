@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . '/../../src/init.php';
+$i = 0;
 
 if ('' == $_POST['nom']) {
     $_SESSION['error_message'] = "Pas de nom";
@@ -42,11 +43,13 @@ foreach($_SESSION['panier'] as $panier){
     $query2 = $db->prepare("INSERT INTO `command`(`status`, `container`, `address`, `idUser`) VALUES (:statut, :containeur, :adresse, :id)");
 
     $query2->execute([
-        ':statut' => "SENT",
+        ':statut' => "NEW",
         ':containeur' => $panier,
         ':adresse' => $_POST['adresse'],
         ':id' => intval($_SESSION['user_id'])
     ]);
+    unset($_SESSION['panier'][$i]);
+    $i+=1;
     }else{
         $_SESSION['error_message'] = "Pas asser de produit";
     }

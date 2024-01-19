@@ -20,6 +20,10 @@ ob_start();?>
             <?=($produit["quantity"]);?> <br>
             <?=($produit["price"]);?> € <br>
             <?php endforeach;?>
+            <form action="/actions/product.php" method="post">
+                <input type="number" name="number">
+                <button type="submit">ajouter au panier</button>
+            </form>
 
 <?php
 if (isset($_SESSION['command'])){

@@ -9,8 +9,8 @@ ob_start();?>
     <?php require_once __DIR__ . '/../partials/show_error.php'; ?>
 
     <form action="/actions/login.php" method="POST">
-        <input type="email" name="emailL" placeholder="email">
-        <input type="password" name="passwordL" placeholder="mot de passe">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="mot de passe">
         <button type="submit">Connexion</button>
     </form>
 </div>
