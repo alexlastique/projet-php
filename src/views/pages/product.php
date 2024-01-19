@@ -4,6 +4,8 @@ require_once __DIR__ . '/../../init.php';
 
 $title = 'product';
 $_SESSION['currentProduct'] = $_GET['slug'];
+$affiche = false;
+
 ob_start();?>
 <div>
     PAGE PRODUCT <br>
@@ -28,14 +30,13 @@ ob_start();?>
 <?php
 if (isset($_SESSION['command'])){
     foreach ($_SESSION['command'] as $produit) {
-        if ($produit["container"] == $_GET['slug']){
+        if ($produit["container"] == $_GET['slug'] AND $affiche!=true){
             echo ('<form action="/actions/product.php" method="POST">
             <label for="comment">Commentaire:</label>
             <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
             <button type="submit">envoyer Commentaire</button>
         </form>');
-        } else{
-            echo ('produit non commander');
+        $affiche = true;
         }
     }
 }
