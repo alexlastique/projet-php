@@ -82,6 +82,6 @@ if ($user != '' AND $user->role == 1) {
 
     $page_content = ob_get_clean();
 } else {
-    // header('Location: /?p=home');
+    header('Location: /?p=home');
 }
 ?>
