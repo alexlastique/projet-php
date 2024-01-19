@@ -32,27 +32,27 @@ foreach($_SESSION['panier'] as $panier){
     ]);
     $quantity = $query->fetchAll();
 
-    if($quantity[0]['quantity']>0){
-    $query = $db->prepare("UPDATE `product` SET `quantity`=:quantity WHERE `name`=:nom");
+    if(intval($quantity[0]['quantity']>0)){
+        $query = $db->prepare("UPDATE `product` SET `quantity`=:quantity WHERE `name`=:nom");
 
-    $query->execute([
-        ':quantity' => intval($quantity[0]['quantity'])-1,
-        ':nom' => $panier
-    ]);
+        $query->execute([
+            ':quantity' => intval($quantity[0]['quantity'])-1,
+            ':nom' => $panier
+        ]);
 
-    $query2 = $db->prepare("INSERT INTO `command`(`status`, `container`, `address`, `idUser`) VALUES (:statut, :containeur, :adresse, :id)");
+        $query2 = $db->prepare("INSERT INTO `command`(`status`, `container`, `address`, `idUser`) VALUES (:statut, :containeur, :adresse, :id)");
 
-    $query2->execute([
-        ':statut' => "NEW",
-        ':containeur' => $panier,
-        ':adresse' => $_POST['adresse'],
-        ':id' => intval($_SESSION['user_id'])
-    ]);
-    unset($_SESSION['panier'][$i]);
-    $i+=1;
+        $query2->execute([
+            ':statut' => "NEW",
+            ':containeur' => $panier,
+            ':adresse' => $_POST['adresse'],
+            ':id' => intval($_SESSION['user_id'])
+        ]);
+        unset($_SESSION['panier'][$i]);
     }else{
         $_SESSION['error_message'] = "Pas asser de produit";
     }
+    $i+=1;
 
 }
 $to = $produits[0]["email"];
